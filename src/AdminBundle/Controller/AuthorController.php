@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Author controller.
  *
- * @Route("author")
+ * @Route("autores")
  */
 class AuthorController extends Controller
 {
