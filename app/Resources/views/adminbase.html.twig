@@ -51,7 +51,7 @@
                                 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                                    data-close-others="true">
                                     {#<img alt="" class="img-circle" src="{{ asset('assets/admin/layout/img/avatar3_small.jpg') }}">#}
-                                    <span class="username username-hide-on-mobile">{{ app.user.username }}</span>
+                                    <span class="username username-hide-on-mobile">Olá</span>
                                     <i class="fa fa-angle-down"></i>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-default">
@@ -83,9 +83,15 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ path('') }}" class="nav-link">
+                                <a href="{{ path('book_index') }}" class="nav-link">
                                     <i class="icon-diamond"></i>
                                     <span class="title">Livros</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ path('author_index') }}" class="nav-link">
+                                    <i class="icon-diamond"></i>
+                                    <span class="title">Autores</span>
                                 </a>
                             </li>
                         </ul>
@@ -133,6 +139,14 @@
 
             <script src="{{ asset('assets/admin/script.min.js') }}" type="text/javascript"></script>
         {% endblock %}
+
+        <script>
+            $(document).ready(function() {
+                $('.js-datepicker').datepicker({
+                    format: 'yyyy-mm-dd'
+                });
+            });
+        </script>
 
         <script type="text/javascript">
             var _class = 'success';
