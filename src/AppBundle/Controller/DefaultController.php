@@ -13,9 +13,12 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
+        $books = $this->get('app.book.service')->findAll();
+        $authors = $this->get('app.author.service')->findAll();
+
+        return $this->render('Default/index.html.twig', [
+            'books' => $books,
+            'authors' => $authors,
         ]);
     }
 }
