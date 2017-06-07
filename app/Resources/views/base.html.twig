@@ -1,13 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    <link rel="stylesheet" href="{{ asset('assets/site/css/style.min.css') }}">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>Sort my life</h1>
+            </div>
+        </div>
+
+        <nav class="row">
+            <ul class="col-xs-12">
+                <li><a href="{{ path('homepage') }}">Home</a></li>
+                <li><a href="{{ path('author_homepage') }}">Autores</a></li>
+                <li><a href="{{ path('book_homepage') }}">Livros</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
 </html>

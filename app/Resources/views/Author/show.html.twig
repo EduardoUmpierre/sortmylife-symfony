@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <main class="container">
+        <section class="row detail-section">
+            <div class="col-xs-12">
+
+                <div class="row">
+                    <div class="col-xs-3">
+                        <span class="list-image" style="background-image: url({{ author.photo }});"></span>
+                    </div>
+                    <div class="col-xs-9">
+                        <h2>{{ author.name }}</h2>
+                        <h3>{{ author.birthday | date('d/m/Y') }}</h3>
+                        <p>{{ author.bio }}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="row content-section">
+            <div class="col-xs-12">
+                <h2>Livros do autor</h2>
+
+                {{ include('Partials/book-list.html.twig', {'books': books}) }}
+            </div>
+        </section>
+    </main>
+{% endblock %}

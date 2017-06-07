@@ -1,0 +1,10 @@
+<div class="row content-list">
+    {% for author in authors %}
+        <div class="col-xs-2">
+            <a href="{{ path('author_detail', {'id': author.id}) }}">
+                <span class="content-list__image list-image" style="background-image: url({{ author.photo }});"></span>
+                <span class="content-list__title">{{ author.name }}</span>
+            </a>
+        </div>
+    {% endfor %}
+</div>

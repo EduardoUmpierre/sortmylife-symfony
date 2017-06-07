@@ -1,0 +1,10 @@
+<div class="row content-list">
+    {% for book in books %}
+        <div class="col-xs-2">
+            <a href="{{ path('book_detail', {'id': book.id}) }}">
+                <span class="content-list__image list-image" style="background-image: url({{ book.image }});"></span>
+                <span class="content-list__title">{{ book.title }}</span>
+            </a>
+        </div>
+    {% endfor %}
+</div>
