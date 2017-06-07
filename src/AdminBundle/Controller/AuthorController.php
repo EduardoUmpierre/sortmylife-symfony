@@ -88,7 +88,7 @@ class AuthorController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('author_edit', array('id' => $author->getId()));
+            return $this->redirectToRoute('author_index');
         }
 
         return $this->render('AdminBundle:Author:edit.html.twig', array(
