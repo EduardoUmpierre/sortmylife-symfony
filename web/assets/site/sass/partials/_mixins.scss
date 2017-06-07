@@ -1,0 +1,66 @@
+@mixin borderRadius($value) {
+	-webkit-border-radius: $value;
+	-moz-border-radius: $value;
+	border-radius: $value;
+}
+
+@mixin flexbox() {
+  	display: -webkit-box;
+  	display: table-cell;
+  	display: -moz-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+@mixin flexboxTable() {
+  display: -webkit-box;
+  display: table;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@mixin flexDirection($value) {
+  	-webkit-flex-direction: $value;
+  	-moz-flex-direction: $value;
+  	-ms-flex-direction: $value;
+  	flex-direction: $value;
+}
+
+@mixin alignSelf($value) {
+  -webkit-align-self: $value;
+  -moz-align-self: $value;
+  -ms-align-self: $value;
+  align-self: $value;
+}
+
+@mixin alignItems($value) {
+  	-webkit-align-items: $value;
+	-moz-align-items: $value;
+	-ms-align-items: $value;
+  	align-items: $value;
+}
+
+@mixin justifyContent($value) {
+	-webkit-justify-content: $value;
+  	-moz-justify-content: $value;
+  	-ms-justify-content: $value;
+	justify-content: $value;
+}
+
+@mixin transform($value) {
+	-webkit-transform: $value;
+	-moz-transform: $value;
+	-ms-transform: $value;
+	-o-transform: $value;
+	transform: $value;
+}
+
+@mixin transition($value) {
+  -webkit-transition: $value;
+  -moz-transition: $value;
+  -o-transition: $value;
+  transition: $value;
+}
