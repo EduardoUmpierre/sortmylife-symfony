@@ -1,49 +1,51 @@
-{% extends 'base.html.twig' %}
+{% extends 'adminbase.html.twig' %}
 
 {% block body %}
-    <h1>Authors list</h1>
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Lista de autores</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Bio</th>
-                <th>Birthday</th>
-                <th>Photo</th>
-                <th>Createdat</th>
-                <th>Updatedat</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for author in authors %}
-            <tr>
-                <td><a href="{{ path('author_show', { 'id': author.id }) }}">{{ author.id }}</a></td>
-                <td>{{ author.name }}</td>
-                <td>{{ author.bio }}</td>
-                <td>{% if author.birthday %}{{ author.birthday|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ author.photo }}</td>
-                <td>{% if author.createdAt %}{{ author.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if author.updatedAt %}{{ author.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('author_show', { 'id': author.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('author_edit', { 'id': author.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>Biografia</th>
+                    <th>Nascimento</th>
+                    <th>Foto</th>
+                    <th>Criado em</th>
+                    <th>Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for author in authors %}
+                    <tr>
+                        <td><a href="{{ path('author_show', { 'id': author.id }) }}">{{ author.id }}</a></td>
+                        <td>{{ author.name }}</td>
+                        <td>{{ author.bio }}</td>
+                        <td>{% if author.birthday %}{{ author.birthday | date('d/m/Y') }}{% endif %}</td>
+                        <td>{{ author.photo }}</td>
+                        <td>{% if author.createdAt %}{{ author.createdAt | date('d/m/Y') }}{% endif %}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('author_show', { 'id': author.id }) }}">Ver detalhes</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('author_edit', { 'id': author.id }) }}">Editar</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('author_new') }}">Create a new author</a>
-        </li>
-    </ul>
+            <ul>
+                <li>
+                    <a href="{{ path('author_new') }}">Adicionar autor</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 {% endblock %}
