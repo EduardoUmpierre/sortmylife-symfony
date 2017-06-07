@@ -1,0 +1,28 @@
+.ui-sortable-helper {
+    display: table;
+}
+
+.video-responsive > video {
+    height: auto;
+    width: 100%;
+}
+
+.full-width-link {
+    display: block;
+    margin: -8px;
+    padding: 10px 8px;
+}
+
+.mt-repeater .mt-repeater-item {
+    overflow: hidden;
+}
+
+.mt-repeater .mt-repeater-input.col-xs-2 {width: 16.66667%;}
+.mt-repeater .mt-repeater-input.col-xs-4 {width: 33.33333%;}
+.mt-repeater .mt-repeater-input.col-xs-6 {width: 50%;}
+.mt-repeater .mt-repeater-input.col-xs-8 {width: 66.66667%;}
+
+.checkbox > label,
+.form-horizontal .checkbox > label {padding-left: 20px;}
+
+.margin-r-20 {margin-right: 20px;}
