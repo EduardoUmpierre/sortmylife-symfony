@@ -7,7 +7,7 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
         <link rel="stylesheet" href="{{ asset('assets/site/css/style.min.css') }}">
     </head>
-    <body>
+    <body {% if is_granted('IS_AUTHENTICATED_FULLY') %}data-id="{{ app.user.id }}"{% endif %}>
         <div id="fb-root"></div>
         <script>
             window.fbAsyncInit = function() {
@@ -91,6 +91,7 @@
         </header>
 
         {% block body %}{% endblock %}
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>

@@ -3,50 +3,52 @@
 {% block body %}
     <div class="row">
         <div class="col-xs-12">
-            <h1>Livro: {{ book.title }}</h1>
+            <div class="portlet light tasks-widget bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <span class="caption-subject font-green-haze bold uppercase">Livro: {{ book.title }}</span>
+                    </div>
+                    <div class="actions">
+                        {{ form_start(delete_form) }}
+                        <input type="submit" class="btn btn-danger btn-sm" value="Excluir">
+                        {{ form_end(delete_form) }}
+                    </div>
+                </div>
 
-            <table class="table table-stripped">
-                <tbody>
-                    <tr>
-                        <th>Id</th>
-                        <td>{{ book.id }}</td>
-                    </tr>
-                    <tr>
-                        <th>Título</th>
-                        <td>{{ book.title }}</td>
-                    </tr>
-                    <tr>
-                        <th>Descrição</th>
-                        <td>{{ book.description }}</td>
-                    </tr>
-                    <tr>
-                        <th>Imagem</th>
-                        <td>{{ book.image }}</td>
-                    </tr>
-                    <tr>
-                        <th>Ano</th>
-                        <td>{{ book.year }}</td>
-                    </tr>
-                    <tr>
-                        <th>Autor</th>
-                        <td>{{ book.author.name }}</td>
-                    </tr>
-                </tbody>
-            </table>
+                <div class="portlet-body">
+                    <table class="table table-stripped">
+                        <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ book.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Título</th>
+                                <td>{{ book.title }}</td>
+                            </tr>
+                            <tr>
+                                <th>Descrição</th>
+                                <td>{{ book.description }}</td>
+                            </tr>
+                            <tr>
+                                <th>Imagem</th>
+                                <td>{{ book.image }}</td>
+                            </tr>
+                            <tr>
+                                <th>Ano</th>
+                                <td>{{ book.year }}</td>
+                            </tr>
+                            <tr>
+                                <th>Autor</th>
+                                <td>{{ book.author.name }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-            <ul>
-                <li>
-                    <a href="{{ path('book_index') }}">Voltar para a lista</a>
-                </li>
-                <li>
-                    <a href="{{ path('book_edit', { 'id': book.id }) }}">Editar</a>
-                </li>
-                <li>
-                    {{ form_start(delete_form) }}
-                        <input type="submit" value="Excluir">
-                    {{ form_end(delete_form) }}
-                </li>
-            </ul>
+            <a class="btn btn-default" href="{{ path('book_index') }}">Voltar para a lista</a>
+            <a class="btn btn-primary" href="{{ path('book_edit', { 'id': book.id }) }}">Editar</a>
         </div>
     </div>
 {% endblock %}

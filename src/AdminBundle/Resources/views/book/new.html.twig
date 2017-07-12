@@ -1,19 +1,37 @@
 {% extends 'adminbase.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="{{ asset('assets/admin/easy-autocomplete.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/admin/easy-autocomplete.themes.min.css') }}">
+{% endblock %}
+
 {% block body %}
     <div class="row">
         <div class="col-xs-12">
-            <h1>Adicionar de livro</h1>
+            <div class="portlet light tasks-widget bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <span class="caption-subject font-green-haze bold uppercase">Adicionar livro</span>
+                    </div>
+                </div>
 
-            {{ form_start(form) }}
-                {{ form_widget(form) }}
-            {{ form_end(form) }}
+                <div class="portlet-body">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
 
-            <ul>
-                <li>
-                    <a href="{{ path('book_index') }}">Voltar para a lista</a>
-                </li>
-            </ul>
+            <a class="btn btn-default" href="{{ path('book_index') }}">Voltar para a lista</a>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="{{ asset('assets/admin/jquery.easy-autocomplete.js') }}"></script>
+    <script src="{{ asset('assets/admin/books-autocomplete.js') }}"></script>
 {% endblock %}

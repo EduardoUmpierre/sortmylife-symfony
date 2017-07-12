@@ -2,7 +2,7 @@
 
 {% block body %}
     <main class="container">
-        <section class="row detail-section">
+        <section class="row detail-section" data-id="{{ book.id }}">
             <div class="col-xs-12">
 
                 <div class="row">
@@ -18,6 +18,37 @@
             </div>
         </section>
 
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <nav id="detail-options">
+            <ul class="row">
+                <li class="col-xs-3">
+                    <a
+                        href="#"
+                        class="btn btn-default js-btn-book {% if read is not empty %}active{% endif %}"
+                        data-url="ler">
+                        Já li
+                    </a>
+                </li>
+                <li class="col-xs-3">
+                    <a
+                        href="#"
+                        class="btn btn-default js-btn-book {% if wantToRead is not empty %}active{% endif %}"
+                        data-url="quero-ler">
+                        Quero ler
+                    </a>
+                </li>
+                <li class="col-xs-3">
+                    <a
+                        href="#"
+                        class="btn btn-default js-btn-book {% if favorite is not empty %}active{% endif %}"
+                        data-url="favoritar">
+                        Favoritar
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        {% endif %}
+
         <section class="row content-section">
             <div class="col-xs-12">
                 <h2>Autor do livro</h2>
@@ -26,4 +57,9 @@
             </div>
         </section>
     </main>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/site/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/site/js/user-api.js') }}"></script>
 {% endblock %}

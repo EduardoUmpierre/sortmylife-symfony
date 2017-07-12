@@ -83,13 +83,13 @@
                             </li>
                             <li class="nav-item">
                                 <a href="{{ path('book_index') }}" class="nav-link">
-                                    <i class="icon-diamond"></i>
+                                    <i class="icon-notebook"></i>
                                     <span class="title">Livros</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ path('author_index') }}" class="nav-link">
-                                    <i class="icon-diamond"></i>
+                                    <i class="icon-user"></i>
                                     <span class="title">Autores</span>
                                 </a>
                             </li>
@@ -138,14 +138,6 @@
 
             <script src="{{ asset('assets/admin/script.min.js') }}" type="text/javascript"></script>
         {% endblock %}
-
-        <script>
-            $(document).ready(function() {
-                $('.js-datepicker').datepicker({
-                    format: 'yyyy-mm-dd'
-                });
-            });
-        </script>
 
         <script type="text/javascript">
             var _class = 'success';

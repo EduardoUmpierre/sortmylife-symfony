@@ -3,47 +3,52 @@
 {% block body %}
     <div class="row">
         <div class="col-xs-12">
-            <h1>Lista de livros</h1>
+            <div class="portlet light tasks-widget bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <span class="caption-subject font-green-haze bold uppercase">Lista de livros</span>
+                    </div>
+                    <div class="actions">
+                        <a class="btn btn-primary" href="{{ path('book_new') }}">Adicionar livro</a>
+                    </div>
+                </div>
 
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Título</th>
-                    <th>Descrição</th>
-                    <th>Imagem</th>
-                    <th>Ano de lançamento</th>
-                    <th>Ações</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for book in books %}
-                    <tr>
-                        <td><a href="{{ path('book_show', { 'id': book.id }) }}">{{ book.id }}</a></td>
-                        <td>{{ book.title }}</td>
-                        <td>{{ book.description }}</td>
-                        <td>{{ book.image }}</td>
-                        <td>{{ book.year }}</td>
-                        <td>
-                            <ul>
-                                <li>
-                                    <a href="{{ path('book_show', { 'id': book.id }) }}">show</a>
-                                </li>
-                                <li>
-                                    <a href="{{ path('book_edit', { 'id': book.id }) }}">edit</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-
-            <ul>
-                <li>
-                    <a href="{{ path('book_new') }}">Adicionar livro</a>
-                </li>
-            </ul>
+                <div class="portlet-body">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Título</th>
+                            <th>Descrição</th>
+                            <th>Autor</th>
+                            <th>Ano de lançamento</th>
+                            <th>Ações</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for book in books %}
+                            <tr>
+                                <td><a href="{{ path('book_show', { 'id': book.id }) }}">{{ book.id }}</a></td>
+                                <td>{{ book.title }}</td>
+                                <td>
+                                    {% if book.description|length > 100 %}
+                                        {{ book.description|slice(0, 100) }}...
+                                    {% else %}
+                                        {{ book.description }}
+                                    {% endif %}
+                                </td>
+                                <td>{{ book.author }}</td>
+                                <td>{{ book.year }}</td>
+                                <td>
+                                    <a class="btn btn-default btn-sm" href="{{ path('book_show', { 'id': book.id }) }}">Ver detalhes</a>
+                                    <a class="btn btn-primary btn-sm" href="{{ path('book_edit', { 'id': book.id }) }}">Editar</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

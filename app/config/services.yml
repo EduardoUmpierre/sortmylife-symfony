@@ -13,6 +13,14 @@ services:
         class: AppBundle\Service\AuthorService
         arguments: ['@doctrine.orm.entity_manager']
 
+    app.user.service:
+        class: AppBundle\Service\UserService
+        arguments: ['@doctrine.orm.entity_manager']
+
+    app.user_book.service:
+        class: AppBundle\Service\UserBookService
+        arguments: ['@doctrine.orm.entity_manager']
+
     app.provider.oauth:
-            class: AppBundle\Security\Core\User\OAuthUserProvider
-            arguments: ['@doctrine.orm.entity_manager', '@security.encoder_factory']
+        class: AppBundle\Security\Core\User\OAuthUserProvider
+        arguments: ['@doctrine.orm.entity_manager', '@security.encoder_factory']
