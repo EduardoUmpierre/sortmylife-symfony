@@ -3,17 +3,21 @@
 {% block body %}
     <div class="row">
         <div class="col-xs-12">
-            <h1>Novo autor</h1>
+            <div class="portlet light tasks-widget bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <span class="caption-subject font-green-haze bold uppercase">Adicionar autor</span>
+                    </div>
+                </div>
 
-            {{ form_start(form) }}
-                {{ form_widget(form) }}
-            {{ form_end(form) }}
+                <div class="portlet-body">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
 
-            <ul>
-                <li>
-                    <a href="{{ path('author_index') }}">Voltar para a listagem</a>
-                </li>
-            </ul>
+            <a class="btn btn-default" href="{{ path('author_index') }}">Voltar para a lista</a>
         </div>
     </div>
 {% endblock %}

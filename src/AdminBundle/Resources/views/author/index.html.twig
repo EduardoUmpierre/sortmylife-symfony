@@ -3,9 +3,18 @@
 {% block body %}
     <div class="row">
         <div class="col-xs-12">
-            <h1>Lista de autores</h1>
+            <div class="portlet light tasks-widget bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <span class="caption-subject font-green-haze bold uppercase">Lista de autores</span>
+                    </div>
+                    <div class="actions">
+                        <a class="btn btn-primary" href="{{ path('author_new') }}">Adicionar autor</a>
+                    </div>
+                </div>
 
-            <table class="table table-striped">
+                <div class="portlet-body">
+                    <table class="table table-striped">
                 <thead>
                 <tr>
                     <th>Id</th>
@@ -27,25 +36,15 @@
                         <td>{{ author.photo }}</td>
                         <td>{% if author.createdAt %}{{ author.createdAt | date('d/m/Y') }}{% endif %}</td>
                         <td>
-                            <ul>
-                                <li>
-                                    <a href="{{ path('author_show', { 'id': author.id }) }}">Ver detalhes</a>
-                                </li>
-                                <li>
-                                    <a href="{{ path('author_edit', { 'id': author.id }) }}">Editar</a>
-                                </li>
-                            </ul>
+                            <a class="btn btn-default btn-sm" href="{{ path('author_show', { 'id': author.id }) }}">Ver detalhes</a>
+                            <a class="btn btn-primary btn-sm" href="{{ path('author_edit', { 'id': author.id }) }}">Editar</a>
                         </td>
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
-
-            <ul>
-                <li>
-                    <a href="{{ path('author_new') }}">Adicionar autor</a>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

@@ -3,22 +3,26 @@
 {% block body %}
     <div class="row">
         <div class="col-xs-12">
-            <h1>Editar autor</h1>
+            <div class="portlet light tasks-widget bordered">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <span class="caption-subject font-green-haze bold uppercase">Editar autor</span>
+                    </div>
+                    <div class="actions">
+                        {{ form_start(delete_form) }}
+                        <input type="submit" class="btn btn-danger btn-sm" value="Excluir">
+                        {{ form_end(delete_form) }}
+                    </div>
+                </div>
 
-            {{ form_start(edit_form) }}
-                {{ form_widget(edit_form) }}
-            {{ form_end(edit_form) }}
+                <div class="portlet-body">
+                    {{ form_start(edit_form) }}
+                    {{ form_widget(edit_form) }}
+                    {{ form_end(edit_form) }}
+                </div>
+            </div>
 
-            <ul>
-                <li>
-                    <a href="{{ path('author_index') }}">Back to the list</a>
-                </li>
-                <li>
-                    {{ form_start(delete_form) }}
-                        <input type="submit" value="Delete">
-                    {{ form_end(delete_form) }}
-                </li>
-            </ul>
+            <a class="btn btn-default" href="{{ path('author_index') }}">Voltar para a lista</a>
         </div>
     </div>
 {% endblock %}
