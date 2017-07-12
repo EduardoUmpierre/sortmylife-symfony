@@ -72,3 +72,17 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+hwi_oauth:
+    # list of names of the firewalls in which this bundle is active, this setting MUST be set
+    firewall_names: [secured_area]
+    resource_owners:
+        facebook:
+            type: facebook
+            client_id: 1451572061598164
+            client_secret: 380b1379feb6dad30fabf3132ce7f6d7
+            scope:         "email"
+            infos_url: "https://graph.facebook.com/me?fields=id,name,email,first_name,last_name,picture.type(large)"
+            options:
+                display: popup #dialog is optimized for popup window
+                auth_type: rerequest # Re-asking for Declined Permissions

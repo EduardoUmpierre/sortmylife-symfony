@@ -2,6 +2,10 @@ html {
     font-size: 10px;
 }
 
+.img-round {
+    @include borderRadius(50%);
+}
+
 /**
  * Header
  **/
@@ -35,6 +39,31 @@ header {
                         color: #FFF;
                     }
                 }
+            }
+        }
+    }
+
+    .row {
+        @include flexbox();
+        @include alignItems(center);
+    }
+
+    .user-data {
+        @include flexbox();
+        @include alignItems(center);
+        max-width: 300px;
+
+        & > img {
+            margin-right: 20px;
+        }
+
+        & > .user-data__info {
+            & > span {
+                color: #000;
+                font-weight: 700;
+                display: block;
+                font-size: 1.2em;
+                margin-bottom: 5px;
             }
         }
     }

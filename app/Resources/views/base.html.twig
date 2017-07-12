@@ -1,32 +1,96 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8"/>
-    <title>{% block title %}Welcome!{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
-    <link rel="stylesheet" href="{{ asset('assets/site/css/style.min.css') }}">
-</head>
-<body>
-<header>
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <h1>Sort my life</h1>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+        <link rel="stylesheet" href="{{ asset('assets/site/css/style.min.css') }}">
+    </head>
+    <body>
+        <div id="fb-root"></div>
+        <script>
+            window.fbAsyncInit = function() {
+                // init the FB JS SDK
+                FB.init({
+                    appId      : '1451572061598164',                        // App ID from the app dashboard
+                    channelUrl : 'http://localhost',      // Channel file for x-domain comms
+                    status     : true,                                 // Check Facebook Login status
+                    xfbml      : true                                  // Look for social plugins on the page
+                });
+            };
+
+            // Load the SDK asynchronously
+            (function(d, s, id){
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {return;}
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/all.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+
+            function fb_login() {
+                FB.getLoginStatus(function(response) {
+                    if (response.status === 'connected') {
+                        // connected
+                        document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                    } else {
+                        // not_authorized
+                        FB.login(function(response) {
+                            if (response.authResponse) {
+                                document.location = "{{ url("hwi_oauth_service_redirect", {service: "facebook"}) }}";
+                            } else {
+                                alert('Cancelled.');
+                            }
+                        }, {scope: 'email'});
+                    }
+                });
+            }
+        </script>
+
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <h1>Sort my life</h1>
+                    </div>
+
+                    <div class="col-xs-6">
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <div class="user-data pull-right">
+                                <img
+                                    src="{{ app.user.facebookImage }}"
+                                    alt="{{ app.user.fullName }}"
+                                    width="50"
+                                    class="img-round pull-left">
+
+                                <div class="user-data__info">
+                                    <span>Olá, {{ app.user.fullName }}</span>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <nav class="row">
+                    <ul class="col-xs-12">
+                        <li><a href="{{ path('homepage') }}">Home</a></li>
+                        <li><a href="{{ path('author_homepage') }}">Autores</a></li>
+                        <li><a href="{{ path('book_homepage') }}">Livros</a></li>
+
+                        <li class="pull-right">
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                <a href="/logout">Logout</a>
+                            {% else %}
+                                <a href="#" onclick="fb_login();">Login</a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </nav>
             </div>
-        </div>
+        </header>
 
-        <nav class="row">
-            <ul class="col-xs-12">
-                <li><a href="{{ path('homepage') }}">Home</a></li>
-                <li><a href="{{ path('author_homepage') }}">Autores</a></li>
-                <li><a href="{{ path('book_homepage') }}">Livros</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
-
-{% block body %}{% endblock %}
-{% block javascripts %}{% endblock %}
-</body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
 </html>

@@ -2672,6 +2672,11 @@ button.close {
 html {
   font-size: 10px; }
 
+.img-round {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%; }
+
 /**
  * Header
  **/
@@ -2698,6 +2703,37 @@ header {
           header nav > ul > li > a:active, header nav > ul > li > a:focus, header nav > ul > li > a:hover {
             background-color: #01579b;
             color: #FFF; }
+  header .row {
+    display: -webkit-box;
+    display: table-cell;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    align-items: center; }
+  header .user-data {
+    display: -webkit-box;
+    display: table-cell;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    max-width: 300px; }
+    header .user-data > img {
+      margin-right: 20px; }
+    header .user-data > .user-data__info > span {
+      color: #000;
+      font-weight: 700;
+      display: block;
+      font-size: 1.2em;
+      margin-bottom: 5px; }
 
 .list-image {
   background-position: center;
